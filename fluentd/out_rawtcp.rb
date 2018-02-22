@@ -1,4 +1,8 @@
 # coding: utf-8
+# 
+# License: Apache2
+# https://github.com/uken/fluent-plugin-out_rawtcp
+
 module Fluent
   class RawTcpOutput < BufferedOutput
     Plugin.register_output('rawtcp', self)
