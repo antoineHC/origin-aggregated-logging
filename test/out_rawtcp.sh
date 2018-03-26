@@ -49,7 +49,7 @@ update_current_fluentd() {
 create_forwarding_logstash() {
   oc apply -f $OS_O_A_L_DIR/hack/templates/logstash.yml
   # wait for logstash to start
-  os::cmd::try_until_text "oc get pods -l component=logstash" "^logstash-.* Running " $FLUENTD_WAIT_TIME
+  os::cmd::try_until_text "oc get pods -l component=logstash" "^logstash-.* Running " 360000
   POD=$( oc get pods -l component=logstash -o name )
   artifact_log create_forwarding_logstash "(oc logs $POD)"
   oc logs $POD 2>&1 | artifact_out || :
