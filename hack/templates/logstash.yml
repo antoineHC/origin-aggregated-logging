@@ -32,12 +32,16 @@ spec:
           volumeMounts:
           - mountPath: /usr/share/logstash/data
             name: data
+          - mountPath: /var/lib/logstash
+            name: lib
         nodeSelector:
           logging-infra-fluentd: "true"
         restartPolicy: Always
         volumes:
         - name: data
-        emptyDir: {}
+          emptyDir: {}
+        - name: lib
+          emptyDir: {}
 --- 
 apiVersion: v1
 kind: Service
